@@ -494,7 +494,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
     private double outlineWidth=2;
     private Color outlineColor=Color.BLACK;
     private Color fillColor=new Color(0,255,0,128);
-    private double speed=50; //milliseconds to execute a move
+    private double speed=10; //milliseconds to execute a move
     private boolean isPenDown=true;
     private boolean isFilling=false;
     private boolean isVisible=true;
@@ -2203,41 +2203,80 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
 
         Turtle base = new Turtle();
         Turtle glass = new Turtle();
-
+        Turtle shadow = new Turtle();
 
         bgcolor("lightblue");
 
+        base.setPosition(-10,0);
         base.penColor("gold");
-        base.width(5);
+        base.width(10);
         glass.width(5);
+
+        for (int i = 310; i > 250; i--) {
+            base.forward(i);
+            base.right(90);
+            base.forward(i-260);
+            base.right(90);
+        }
 
         glass.setDirection(90);
         glass.penColor("floralwhite");
-        glass.forward(300);
-//        for(int j = 0 ; j <180;j++)
-//        {
-//            bob.forward(2);
-//            bob.right(1);
-//        }
-        for (int i = 1; i < 3; i++) {
-            base.forward(200);
-            base.right(90);
-            base.forward(50);
-            base.right(90);
+        glass.forward(400);
+        for(int j = 0 ; j <180;j++)
+        {
+            glass.forward(2.5);
+            glass.right(1);
         }
+        glass.forward(400);
+        glass.penColor("lightblue");
+        glass.width(4);
+        glass.setPosition(220,400,180);
+        glass.penColor("floralwhite");
+        glass.forward(40);
+        glass.right(180);
+        glass.forward(20);
+        glass.left(90);
+        glass.forward(15);
+        glass.right(180);
+        glass.forward(30);
+
+        glass.penColor("lightblue");
+        glass.width(4);
+        glass.setPosition(260,440,180);
+        glass.penColor("floralwhite");
+        glass.forward(60);
+        glass.right(180);
+        glass.forward(30);
+        glass.left(90);
+        glass.forward(20);
+        glass.right(180);
+        glass.forward(40);
+
+        shadow.width(15);
+        shadow.penColor("gold");
+        shadow.setPosition(150 ,-60 );
+        shadow.penColor("lightslategray");
+        for(int n = 200 ; n>190 ; n-- )
+        {
+            shadow.forward(n);
+            shadow.right(90);
+            shadow.forward(1);
+            shadow.right(90);
+            shadow.forward(n-20);
+            shadow.left(90);
+            shadow.forward(1);
+            shadow.left(90);
+        }
+
+
+        drawStem();
         drawRose();
-        drawPeatl();
 
 
 
 
-//        }
-
-
-
-
-        base.saveGCODE("test.gcode");
-        glass.saveGCODE("test.gcode");
+        base.saveGCODE("Month of February.gcode");
+        glass.saveGCODE("Month of February.gcode");
 
 
 
@@ -2248,103 +2287,137 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      * @param e event
      */
 
-    public  static void drawPeatl()
-    {
-        Turtle petal = new Turtle();
-        petal.width(5);
-        petal.setPosition(50 , 0 );
-        petal.penColor("darkred");
-        double petal_angle = 1.5;
-        for(int k = 0 ;  k < 40 ; k++)
-        {
-            petal.left(petal_angle);
-            petal.forward(2);
-        }
-        for(int k = 0 ;  k < 40 ; k++)
-        {
-            petal.right(petal_angle);
-            petal.forward(2);
-        }
-        petal.right(100);
-        for(int k = 0 ;  k < 40 ; k++)
-        {
-            petal.right(petal_angle);
-            petal.forward(2);
-        }
-        for(int k = 0 ;  k < 40 ; k++)
-        {
-            petal.right(petal_angle);
-            petal.forward(2);
-        }
 
-        petal.saveGCODE("test.gcode");
+    public static  void drawStem()
+    {
+        Turtle stem = new Turtle();
+
+        stem.width(7);
+        stem.penColor("lightblue");
+        stem.setPosition(80, 0);
+        stem.penColor("darkgreen");
+        for (int k = 0; k < 23; k++) {
+            stem.left(4);
+            stem.forward(2);
+        }
+        stem.forward(165);
+        stem.saveGCODE("Month of February.gcode");
     }
 
-    public static void drawRose()
-    {
+    public static void drawRose() {
         Turtle rose = new Turtle();
         double rose_angle = 1.5;
+        double rose_distance = 2;
 
-        rose.penColor("forestgreen");
+        rose.width(5);
+
+        rose.penColor("lightblue");
         rose.left(90);
-        rose.setPosition(100,100);
-        rose.forward(100);
+        rose.setPosition(100, 200);
         rose.penColor("darkred");
-//        for(int r = 0 ; r < 6 ; r++){
-        for(int k = 0 ;  k < 40 ; k++)
-        {
-            rose.left(rose_angle);
-            rose.forward(2);
+
+            for (int k = 0; k < 40; k++) {
+                rose.left(rose_angle);
+                rose.forward(rose_distance);
+            }
+            for (int k = 0; k < 70; k++) {
+                rose.right(rose_angle);
+                rose.forward(rose_distance);
+            }
+            rose.right(80);
+            for(int r = 0 ; r < 3 ; r++)
+            {
+                for (int k = 0; k < 10; k++) {
+                    rose.right(rose_angle+2);
+                    rose.forward(rose_distance);
+                }
+                for (int k = 0; k < 10; k++) {
+                    rose.left(rose_angle+2);
+                    rose.forward(rose_distance);
+                }
+            }
+            for (int k = 0; k < 20; k++) {
+                rose.right(rose_angle+3);
+                rose.forward(rose_distance);
+            }
+            for (int k = 0; k < 40; k++) {
+                rose.left(rose_angle-1);
+                rose.forward(rose_distance);
+            }
+            rose.left(180);
+
+            for (int k = 0; k < 40; k++) {
+                rose.right(rose_angle);
+                rose.forward(rose_distance);
+            }
+            for (int k = 0; k < 60; k++) {
+                rose.left(rose_angle);
+                rose.forward(rose_distance);
+            }
+            rose.left(80);
+            for(int r = 0 ; r < 2 ; r++)
+            {
+                for (int k = 0; k < 10; k++) {
+                rose.left(rose_angle+2);
+                rose.forward(rose_distance);
+                }
+                for (int k = 0; k < 10; k++) {
+                rose.right(rose_angle+2);
+                rose.forward(rose_distance);
+                }
+            }
+            for (int k = 0; k < 8; k++) {
+                rose.left(rose_angle+2);
+                rose.forward(rose_distance);
+            }
+
+            rose.right(80);
+
+            for (int k = 0; k < 10; k++) {
+                rose.right(rose_angle+2);
+                rose.forward(rose_distance);
+            }
+            for (int k = 0; k < 10; k++) {
+                rose.left(rose_angle+2);
+                rose.forward(rose_distance);
+             }
+        for (int k = 0; k < 10; k++) {
+            rose.right(rose_angle+2);
+            rose.forward(rose_distance);
         }
-        for(int k = 0 ;  k < 40 ; k++)
-        {
-            rose.right(rose_angle);
-            rose.forward(2);
+        for (int k = 0; k < 10; k++) {
+            rose.left(rose_angle+2);
+            rose.forward(rose_distance);
         }
-        rose.right(100);
-        for(int k = 0 ;  k < 40 ; k++)
+
+
+
+        rose.right(80);
+        for(int n = 0 ; n < 2 ; n++)
         {
-            rose.right(rose_angle);
-            rose.forward(2);
+            for(int j = 0 ; j < 70; j++)
+            {
+                rose.forward(rose_distance);
+                rose.right(2);
+            }
+            for(int j = 0 ; j < 20; j++)
+            {
+                rose.forward(rose_distance);
+                rose.right(4);
+            }
+            for(int j = 0 ; j < 40; j++)
+            {
+                rose.forward(rose_distance);
+                rose.right(1);
+            }
+            for(int j = 0 ; j < 30; j++)
+            {
+                rose.forward(rose_distance);
+                rose.right(3);
+            }
+            rose.left(20);
         }
-        for(int k = 0 ;  k < 40 ; k++)
-        {
-            rose.right(rose_angle);
-            rose.forward(2);
-        }
-        rose.left(180);
-        for(int k = 0 ;  k < 40 ; k++)
-        {
-            rose.right(rose_angle);
-            rose.forward(2);
-        }
-        for(int k = 0 ;  k < 40 ; k++)
-        {
-            rose.left(rose_angle);
-            rose.forward(2);
-        }
-        rose.left(100);
-        for(int k = 0 ;  k < 40 ; k++)
-        {
-            rose.left(rose_angle);
-            rose.forward(2);
-        }
-        for(int k = 0 ;  k < 40 ; k++)
-        {
-            rose.left(rose_angle);
-            rose.forward(2);
-        }
-        rose.left(180);
-        for(int k = 0 ;  k < 40 ; k++)
-        {
-            rose.right(rose_angle);
-            rose.forward(2);
-        }
-        for(int k = 0 ;  k < 40 ; k++)
-        {
-            rose.right(rose_angle);
-            rose.forward(2);
-        }
+        rose.saveGCODE("Month of February.gcode");
     }
 
     public void actionPerformed(ActionEvent e)
