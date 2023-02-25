@@ -494,7 +494,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
     private double outlineWidth=2;
     private Color outlineColor=Color.BLACK;
     private Color fillColor=new Color(0,255,0,128);
-    private double speed=10; //milliseconds to execute a move
+    private double speed=20; //milliseconds to execute a move
     private boolean isPenDown=true;
     private boolean isFilling=false;
     private boolean isVisible=true;
@@ -2230,27 +2230,27 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
         glass.forward(400);
         glass.penColor("lightblue");
         glass.width(4);
-        glass.setPosition(220,400,180);
-        glass.penColor("floralwhite");
-        glass.forward(40);
-        glass.right(180);
-        glass.forward(20);
-        glass.left(90);
-        glass.forward(15);
-        glass.right(180);
-        glass.forward(30);
-
-        glass.penColor("lightblue");
-        glass.width(4);
-        glass.setPosition(260,440,180);
+        glass.setPosition(240,420,90);
         glass.penColor("floralwhite");
         glass.forward(60);
         glass.right(180);
         glass.forward(30);
         glass.left(90);
-        glass.forward(20);
+        glass.forward(10);
         glass.right(180);
-        glass.forward(40);
+        glass.forward(20);
+
+        glass.penColor("lightblue");
+        glass.width(4);
+        glass.setPosition(220,400,90);
+        glass.penColor("floralwhite");
+        glass.forward(30);
+        glass.right(180);
+        glass.forward(15);
+        glass.left(90);
+        glass.forward(5);
+        glass.right(180);
+        glass.forward(10);
 
         shadow.width(15);
         shadow.penColor("gold");
@@ -2293,7 +2293,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
         Turtle stem = new Turtle();
 
         stem.width(7);
-        stem.penColor("lightblue");
+        stem.penColor("gold");
         stem.setPosition(80, 0);
         stem.penColor("darkgreen");
         for (int k = 0; k < 23; k++) {
