@@ -2199,27 +2199,21 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      *
      * @param a commandline args
      */
-    public static void main(String[] a) {
-
-        Rose rose = new Rose();
-        Rose rose2 = new Rose();
-        Globe globe = new Globe();
-
-        bgcolor("lightblue");
-
-        globe.drawGlobe("gold" , "floralwhite" , "floralwhite" , "gray" );
-
-        rose.drawRose("darkred" , "darkgreen"  , 100 , 200 ,80 ,0 );
-
-        rose2.drawRose("red" , "darkgreen" , 200 , 200 ,180 ,0 );
-
-
-
-//        base.saveGCODE("Month of February.gcode");
-//        glass.saveGCODE("Month of February.gcode");
-//        shadow.saveGCODE("Month of February.gcode");
-
-    }
+//    public static void main(String[] a) {
+//
+//        Rose rose = new Rose();
+//        Rose rose2 = new Rose();
+//        Globe globe = new Globe();
+//
+//        bgcolor("lightblue");
+//
+//        globe.drawGlobe("gold" , "floralwhite" , "floralwhite" , "gray" );
+//
+//        rose.drawRose("darkred" , "darkgreen"  , 100 , 200 ,80 ,0 );
+//
+//        rose2.drawRose("red" , "darkgreen" , 200 , 200 ,180 ,0 );
+//
+//    }
 
     /**
      * Internal mehod for handling events.
